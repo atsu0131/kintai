@@ -10,4 +10,4 @@
       %tr
         %td= department.name
         %td= l department.created_at
-        %td= link_to "メンバー", department_users_path(department)
+        %td= link_to "#{@user_counts[department.id] || 0}人", department_users_path(department)

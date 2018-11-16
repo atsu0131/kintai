@@ -1,6 +1,7 @@
 class DepartmentsController < ApplicationController
   def index
     @departments = Department.all
+    @user_counts = User.group(:department_id).count
   end
 
   def new
