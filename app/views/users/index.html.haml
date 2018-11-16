@@ -1,0 +1,17 @@
+%h1 ユーザ一覧
+%table
+  %thead
+    %tr
+      %th 名前
+      %th メール
+      %th 役職
+      %th 在職
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td= user.email
+        %td= user.position
+        %td= user.active
+
+

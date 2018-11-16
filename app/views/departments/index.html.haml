@@ -4,8 +4,10 @@
     %tr
       %th 名前
       %th 作成日
+      %th
   %tbody
     - @departments.each do |department|
       %tr
         %td= department.name
         %td= l department.created_at
+        %td= link_to "メンバー", department_users_path(department)

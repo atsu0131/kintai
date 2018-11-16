@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :departments
-  # resources :users
+  resources :departments do
+    resources :users, shallow: true
+  end
 end
