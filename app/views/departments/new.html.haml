@@ -1,0 +1,16 @@
+%h1 部署作成
+
+= form_with model: @department, local: true do |f|
+  %div
+    = f.label :name, "名前"
+    = f.text_field :name, required: true
+  -# %div
+  -#   = f.label :email, "メール"
+  -#   = f.text_field :email, required: true
+  -# %div
+  -#   = f.label :positon, "役職"
+  -#   = f.select :positon, [["平社員", "member"],["部長","manager"]]
+  -# %div
+  -#   = f.label :active, "在職"
+  -#   = f.check_box :active
+  %div= f.submit "作成"
