@@ -1,0 +1,11 @@
+%h1 部署一覧
+%table
+  %thead
+    %tr
+      %th 名前
+      %th 作成日
+  %tbody
+    - @departments.each do |department|
+      %tr
+        %td= department.name
+        %td= l department.created_at
