@@ -1,4 +1,4 @@
-%h1 ユーザ一覧
+%h1 ユーザ-一覧
 %table
   %thead
     %tr
@@ -6,6 +6,7 @@
       %th メール
       %th 役職
       %th 在職
+      %th
   %tbody
     - @users.each do |user|
       %tr
@@ -13,5 +14,6 @@
         %td= user.email
         %td= user.position
         %td= user.active
+        %td= link_to '編集', edit_user_url(user)
 
 
