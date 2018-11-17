@@ -26,7 +26,7 @@ class DepartmentsController < ApplicationController
     if @department.update(department_params)
       redirect_to departments_url, notice: "更新しました"
     else
-      render :new
+      render :edit
     end
   end
 

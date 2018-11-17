@@ -5,9 +5,11 @@
       %th 名前
       %th 作成日
       %th
+      %th
   %tbody
     - @departments.each do |department|
       %tr
         %td= department.name
         %td= l department.created_at
         %td= link_to "#{@user_counts[department.id] || 0}人", department_users_path(department)
+        %td= link_to "編集", edit_department_url(department)
