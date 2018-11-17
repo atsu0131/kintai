@@ -1,0 +1,5 @@
+= form_with model: @department, local: true do |f|
+  %div
+    = f.label :name, "名前"
+    = f.text_field :name, required: true
+  %div= f.submit "作成"
