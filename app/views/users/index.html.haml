@@ -1,5 +1,5 @@
 %h1 ユーザ-一覧
-%div= link_to '作成', new_department_user_url
+%div= link_to '作成', new_department_user_path
 %table
   %thead
     %tr
@@ -15,5 +15,7 @@
         %td= user.email
         %td= user.position
         %td= user.active
-        %td= link_to '編集', edit_user_url(user)
+        %td= link_to '編集', edit_user_path(user)
+
+
 

@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_095155) do
+ActiveRecord::Schema.define(version: 2018_11_17_054824) do
 
   create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_departments_on_name", unique: true
+  end
+
+  create_table "timecards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_timecards_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -31,5 +40,6 @@ ActiveRecord::Schema.define(version: 2018_11_16_095155) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "timecards", "users"
   add_foreign_key "users", "departments"
 end

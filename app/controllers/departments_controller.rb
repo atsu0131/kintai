@@ -17,6 +17,19 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  def edit
+    @department = Department.find(params[:id])
+  end
+
+  def update
+    @department = Department.find(params[:id])
+    if @department.update(department_params)
+      redirect_to departments_url, notice: "更新しました"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def department_params
