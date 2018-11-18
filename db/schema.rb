@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_054824) do
+ActiveRecord::Schema.define(version: 2018_11_18_042634) do
+
+  create_table "approvers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "department_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_approvers_on_department_id"
+    t.index ["user_id"], name: "index_approvers_on_user_id"
+  end
 
   create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +49,8 @@ ActiveRecord::Schema.define(version: 2018_11_17_054824) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "approvers", "departments"
+  add_foreign_key "approvers", "users"
   add_foreign_key "timecards", "users"
   add_foreign_key "users", "departments"
 end
