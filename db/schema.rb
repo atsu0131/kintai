@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_11_18_042634) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_approvers_on_department_id"
+    t.index ["user_id", "department_id"], name: "index_approvers_on_user_id_and_department_id", unique: true
     t.index ["user_id"], name: "index_approvers_on_user_id"
   end
 

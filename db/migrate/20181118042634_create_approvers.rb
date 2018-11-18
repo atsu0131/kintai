@@ -5,6 +5,7 @@ class CreateApprovers < ActiveRecord::Migration[5.2]
       t.references :department, foreign_key: true, null: false
 
       t.timestamps
+      t.index [:user_id, :department_id], unique: true
     end
   end
 end
