@@ -1,0 +1,9 @@
+= form_with(model: @department, local: true) do |form|
+  - if @department.errors.any?
+    #error_explanation
+      %h2
+        = @department.errors.count
+        件のエラーがあります。
+      %ul
+        - @department.errors.full_messages.each do |msg|
+          %li= msg
