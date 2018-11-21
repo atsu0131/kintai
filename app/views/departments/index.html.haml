@@ -12,12 +12,5 @@
         %td= department.name
         %td= l department.created_at
         %td= link_to "#{@user_counts[department.id] || 0}人", department_users_path(department)
-        %td= link_to "編集", edit_department_url(department)
-        %td= link_to '削除', departments_url(department), :confirm => 'Sure?',:method => :delete,:remote => true
-
-:javascript
-  $(function() {
-   $('a[data-method="delete"]').on('ajax:success', function(xhr,data,status) {
-      $('#department_'+department.id).fadeOut();
-   });
-  });
+        %td= link_to "編集", edit_department_url(department), class: 'btn btn-success delete'
+        %td= link_to '削除', department, method: :delete, remote: true, data: {confirm: "削除します"}, class: 'btn btn-danger delete'
