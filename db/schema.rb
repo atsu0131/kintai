@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2018_11_18_042634) do
 
-  create_table "approvers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "approval_authorities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "department_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["department_id"], name: "index_approvers_on_department_id"
-    t.index ["user_id", "department_id"], name: "index_approvers_on_user_id_and_department_id", unique: true
-    t.index ["user_id"], name: "index_approvers_on_user_id"
+    t.index ["department_id"], name: "index_approval_authorities_on_department_id"
+    t.index ["user_id", "department_id"], name: "index_approval_authorities_on_user_id_and_department_id", unique: true
+    t.index ["user_id"], name: "index_approval_authorities_on_user_id"
   end
 
   create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2018_11_18_042634) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "approvers", "departments"
-  add_foreign_key "approvers", "users"
+  add_foreign_key "approval_authorities", "departments"
+  add_foreign_key "approval_authorities", "users"
   add_foreign_key "timecards", "users"
   add_foreign_key "users", "departments"
 end
