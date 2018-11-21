@@ -1,4 +1,4 @@
-class Approver < ApplicationRecord
+class ApprovalAuthority < ApplicationRecord
   belongs_to :user
   belongs_to :department
 end
