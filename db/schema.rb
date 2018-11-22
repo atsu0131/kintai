@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2018_11_18_042634) do
   end
 
   create_table "timecards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "start_at", null: false
-    t.datetime "end_at", null: false
+    t.datetime "end_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_timecards_on_user_id"
