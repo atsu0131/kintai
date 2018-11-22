@@ -1,6 +1,6 @@
 %h1 勤務時間入力
 
-= form_with model: @timecard, local: true do |f|
+= form_with model: [@user, @timecard], local: true do |f|
   %div
     = f.time_select :start_at, required: true
   %div
