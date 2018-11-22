@@ -1,16 +1,14 @@
 class TimecardsController < ApplicationController
+  before_action :set_user, only: [:index, :new, :create]
   def index
-    @user = User.find(params[:user_id])
     @timecards = @user.timecards.all
   end
 
   def new
-    @user = User.find(params[:user_id])
     @timecard = @user.timecards.build
   end
 
   def create
-    @user = User.find(params[:user_id])
     @timecard = @user.timecards.build(timecard_params)
 
     if @timecard.save
@@ -24,5 +22,9 @@ class TimecardsController < ApplicationController
 
   def timecard_params
     params.require(:timecard).permit(:user_id, :start_at, :end_at)
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end
