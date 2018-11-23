@@ -1,3 +1,12 @@
+.row
+  = search_form_for @q, url: '' do |f|
+    .col-sm-4
+      .form-group
+        = f.search_field :name_cont, placeholder: 'ユーザー'
+    .col-sm-2
+      .form-group
+        = f.submit '検索', name: nil
+
 %h1 ユーザ-一覧
 %div= link_to '作成', new_department_user_path
 %table

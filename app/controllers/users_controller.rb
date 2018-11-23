@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_department, only: [:index, :new, :create]
   def index
     @users = @department.users.where(active: true)
+    @q = @users.search(params[:q])
+    @users = @q.result
   end
 
   def new
