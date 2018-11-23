@@ -5,12 +5,11 @@ class ApproversController < ApplicationController
   end
 
   def edit
-    @department = Department.find(params[:department_id])
-    @approver = approval_authorities.find(params[:id])
+    @approver = ApprovalAuthorities.find(params[:id])
   end
 
   def update
-    @approver = approval_authorities.find(params[:id])
+    @approver = ApprovalAuthorities.find(params[:id])
     if @approver.update(approver_params)
       redirect_to departments_path
     else
