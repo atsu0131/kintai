@@ -27,3 +27,4 @@
         %td= user.active
         %td= link_to '編集', edit_user_path(user)
         %td= link_to '勤怠入力', user_timecards_path(user)
+= paginate @users
