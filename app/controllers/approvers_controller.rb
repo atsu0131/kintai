@@ -1,16 +1,16 @@
 class ApproversController < ApplicationController
   def new
     @department = Department.find(params[:department_id])
-    @approver = @department.approvers.build
+    @approver = @department.approval_authorities.build
   end
 
   def edit
     @department = Department.find(params[:department_id])
-    @approver = Approver.find(params[:id])
+    @approver = approval_authorities.find(params[:id])
   end
 
   def update
-    @approver = Approver.find(params[:id])
+    @approver = approval_authorities.find(params[:id])
     if @approver.update(approver_params)
       redirect_to departments_path
     else
@@ -21,6 +21,6 @@ class ApproversController < ApplicationController
   private
 
   def approver_params
-    params.require(:approver).permit(:user_id, :department_id)
+    params.require(:approval_authority).permit(:user_id, :department_id)
   end
 end
