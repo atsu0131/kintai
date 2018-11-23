@@ -1,0 +1,12 @@
+%h1 #{@user.name}のタイムカード
+%div= link_to '作成', new_user_timecard_path
+%table
+  %thead
+    %tr
+      %th 開始時間
+      %th 終了時間
+  %tbody
+    - @timecards.each do |timecard|
+      %tr
+        %td= timecard.start_at
+        %td= timecard.end_at
