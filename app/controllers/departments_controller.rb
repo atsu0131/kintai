@@ -31,6 +31,7 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
+    @department = Department.find(params[:id])
     @department.destroy
     head :no_content
   end
