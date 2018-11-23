@@ -24,7 +24,7 @@ class DepartmentsController < ApplicationController
   def update
     @department = Department.find(params[:id])
     if @department.update(department_params)
-      redirect_to departments_url, notice: "更新しました"
+      redirect_to departments_path, notice: "更新しました"
     else
       render :edit
     end
