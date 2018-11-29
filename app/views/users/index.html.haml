@@ -1,3 +1,12 @@
+.row
+  = search_form_for @q, url: '' do |f|
+    .col-sm-4
+      .form-group
+        = f.search_field :name_cont, placeholder: 'ユーザー'
+    .col-sm-2
+      .form-group
+        = f.submit '検索', name: nil
+
 %h1 ユーザ-一覧
 %div= link_to '作成', new_department_user_path
 %table
@@ -8,6 +17,7 @@
       %th 役職
       %th 在職
       %th
+      %th
   %tbody
     - @users.each do |user|
       %tr
@@ -16,6 +26,5 @@
         %td= user.position
         %td= user.active
         %td= link_to '編集', edit_user_path(user)
-
-
-
+        %td= link_to '勤怠入力', user_timecards_path(user)
+= paginate @users

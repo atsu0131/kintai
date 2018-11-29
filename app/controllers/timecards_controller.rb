@@ -1,15 +1,18 @@
 class TimecardsController < ApplicationController
+  before_action :set_user, only: [:index, :new, :create]
   def index
+    @timecards = @user.timecards.all
   end
 
   def new
-    @timecard = Timecard.new
+    @timecard = @user.timecards.build
   end
 
   def create
-    @timecard = Timecard.new(timecard_params)
+    @timecard = @user.timecards.build(timecard_params)
+
     if @timecard.save
-      redirect_to timecards_url
+      redirect_to  user_timecards_url(@user)
     else
       render :new
     end
@@ -18,6 +21,10 @@ class TimecardsController < ApplicationController
   private
 
   def timecard_params
-    params.require(:department).permit(:user_id, :start_at, :end_at)
+    params.require(:timecard).permit(:user_id, :start_at, :end_at)
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end
