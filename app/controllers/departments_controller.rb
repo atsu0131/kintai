@@ -30,6 +30,12 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @department = Department.find(params[:id])
+    @department.destroy
+    head :no_content
+  end
+
   private
 
   def department_params
