@@ -1,0 +1,5 @@
+- if @status == 'success'
+  $("tbody").append("#{j(render("tr", timecard: @timecard))}");
+- elsif @status == 'fail'
+  alert('error!');
+$("#timecard-modal").modal("hide");

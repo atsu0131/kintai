@@ -10,11 +10,16 @@ class TimecardsController < ApplicationController
 
   def create
     @timecard = @user.timecards.build(timecard_params)
-
-    if @timecard.save
-      redirect_to  user_timecards_url(@user)
-    else
-      render :new
+    respond_to do |format|
+      if @timecard.save
+        format.html { redirect_to @timecard, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @timecard }
+        format.js { @status = "success"}
+      else
+        format.html { render :new }
+        format.json { render json: @timecard.errors, status: :unprocessable_entity }
+        format.js { @status = "fail" }
+      end
     end
   end
 
