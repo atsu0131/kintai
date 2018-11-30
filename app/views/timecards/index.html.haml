@@ -1,6 +1,6 @@
 %h1 #{@user.name}のタイムカード
-%div= link_to '作成', new_user_timecard_path, remote: true
-#user-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+%div= link_to '作成', new_user_timecard_path, remote: true, class: "btn btn-lg btn-primary"
+#timecard-modal.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
 %table
   %thead
     %tr

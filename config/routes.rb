@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :departments, only: %i[index new create edit update destroy] do
     resources :users, shallow: true do
-      resources :timecards, only: %i[index new create edit update destroy]
+      resources :timecards
     end
   end
 end
